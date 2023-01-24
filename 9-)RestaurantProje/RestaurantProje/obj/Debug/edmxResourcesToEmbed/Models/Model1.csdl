@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminGiri">
+    <Key>
+      <PropertyRef Name="Uid1" />
+    </Key>
+    <Property Name="Uid1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="createdon" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Menü">
+    <Key>
+      <PropertyRef Name="MenuNo" />
+    </Key>
+    <Property Name="MenuNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YemekAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="YemekFiyati" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IcecekAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IcecekFiyati" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TatliAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TatliFiyati" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="MusteriGiri">
+    <Key>
+      <PropertyRef Name="Uid1" />
+    </Key>
+    <Property Name="Uid1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="createdon" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Personel">
+    <Key>
+      <PropertyRef Name="PersonelNo" />
+    </Key>
+    <Property Name="PersonelNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Yas" Type="Int32" />
+    <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Maas" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="Rezervasyon">
+    <Key>
+      <PropertyRef Name="RezervasyonNo" />
+    </Key>
+    <Property Name="RezervasyonNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasaNo" Type="Int32" />
+    <Property Name="KisiAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KisiSayisi" Type="Int32" />
+    <Property Name="GelecegiSaat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Sipari">
+    <Key>
+      <PropertyRef Name="SiparisNo" />
+    </Key>
+    <Property Name="SiparisNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YemekAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IcecekAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TatliAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityContainer Name="RestaurantEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminGiris" EntityType="Self.AdminGiri" />
+    <EntitySet Name="Menü" EntityType="Self.Menü" />
+    <EntitySet Name="MusteriGiris" EntityType="Self.MusteriGiri" />
+    <EntitySet Name="Personels" EntityType="Self.Personel" />
+    <EntitySet Name="Rezervasyons" EntityType="Self.Rezervasyon" />
+    <EntitySet Name="Siparis" EntityType="Self.Sipari" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <FunctionImport Name="MenuEkleYenile">
+      <Parameter Name="MenuNo" Mode="In" Type="Int32" />
+      <Parameter Name="YemekAdi" Mode="In" Type="String" />
+      <Parameter Name="YemekFiyati" Mode="In" Type="Int32" />
+      <Parameter Name="IcecekAdi" Mode="In" Type="String" />
+      <Parameter Name="IcecekFiyati" Mode="In" Type="Int32" />
+      <Parameter Name="TatliAdi" Mode="In" Type="String" />
+      <Parameter Name="TatliFiyati" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="MenuListele" ReturnType="Collection(RestaurantModel.MenuListele_Result)" />
+    <FunctionImport Name="MenuSil">
+      <Parameter Name="MenuNo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="MenuSirala" ReturnType="Collection(RestaurantModel.MenuSirala_Result)">
+      <Parameter Name="MenuNo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PersonelEkleYenile">
+      <Parameter Name="PersonelNo" Mode="In" Type="Int32" />
+      <Parameter Name="Unvan" Mode="In" Type="String" />
+      <Parameter Name="Yas" Mode="In" Type="Int32" />
+      <Parameter Name="AdSoyad" Mode="In" Type="String" />
+      <Parameter Name="Adres" Mode="In" Type="String" />
+      <Parameter Name="Telefon" Mode="In" Type="String" />
+      <Parameter Name="Maas" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="PersonelListele" ReturnType="Collection(RestaurantModel.PersonelListele_Result)" />
+    <FunctionImport Name="PersonelSirala" ReturnType="Collection(RestaurantModel.PersonelSirala_Result)">
+      <Parameter Name="PersonelNo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PSil">
+      <Parameter Name="PersonelNo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RezervasyonEkleYenile">
+      <Parameter Name="RezervasyonNo" Mode="In" Type="Int32" />
+      <Parameter Name="MasaNo" Mode="In" Type="Int32" />
+      <Parameter Name="KisiAdSoyad" Mode="In" Type="String" />
+      <Parameter Name="KisiSayisi" Mode="In" Type="Int32" />
+      <Parameter Name="GelecegiSaat" Mode="In" Type="String" />
+      <Parameter Name="Telefon" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RezervasyonListele" ReturnType="Collection(RestaurantModel.RezervasyonListele_Result)" />
+    <FunctionImport Name="RezervasyonSil">
+      <Parameter Name="RezervasyonNo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RezervasyonSirala" ReturnType="Collection(RestaurantModel.RezervasyonSirala_Result)">
+      <Parameter Name="RezervasyonNo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SiparisEkleYenile">
+      <Parameter Name="SiparisNo" Mode="In" Type="Int32" />
+      <Parameter Name="YemekAdi" Mode="In" Type="String" />
+      <Parameter Name="IcecekAdi" Mode="In" Type="String" />
+      <Parameter Name="TatliAdi" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SiparisListele" ReturnType="Collection(RestaurantModel.SiparisListele_Result)" />
+    <FunctionImport Name="SiparisSil">
+      <Parameter Name="SiparisNo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SiparisSirala" ReturnType="Collection(RestaurantModel.SiparisSirala_Result)">
+      <Parameter Name="SiparisNo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(RestaurantModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(RestaurantModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="MenuListele_Result">
+    <Property Type="Int32" Name="MenuNo" Nullable="false" />
+    <Property Type="String" Name="YemekAdi" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="YemekFiyati" Nullable="true" Precision="19" />
+    <Property Type="String" Name="IcecekAdi" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="IcecekFiyati" Nullable="true" Precision="19" />
+    <Property Type="String" Name="TatliAdi" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="TatliFiyati" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="MenuSirala_Result">
+    <Property Type="Int32" Name="MenuNo" Nullable="false" />
+    <Property Type="String" Name="YemekAdi" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="YemekFiyati" Nullable="true" Precision="19" />
+    <Property Type="String" Name="IcecekAdi" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="IcecekFiyati" Nullable="true" Precision="19" />
+    <Property Type="String" Name="TatliAdi" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="TatliFiyati" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="PersonelListele_Result">
+    <Property Type="Int32" Name="PersonelNo" Nullable="false" />
+    <Property Type="String" Name="Unvan" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Yas" Nullable="true" />
+    <Property Type="String" Name="AdSoyad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Adres" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefon" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Maas" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="PersonelSirala_Result">
+    <Property Type="Int32" Name="PersonelNo" Nullable="false" />
+    <Property Type="String" Name="Unvan" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Yas" Nullable="true" />
+    <Property Type="String" Name="AdSoyad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Adres" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefon" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Maas" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="RezervasyonListele_Result">
+    <Property Type="Int32" Name="RezervasyonNo" Nullable="false" />
+    <Property Type="Int32" Name="MasaNo" Nullable="true" />
+    <Property Type="String" Name="KisiAdSoyad" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="KisiSayisi" Nullable="true" />
+    <Property Type="String" Name="GelecegiSaat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefon" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RezervasyonSirala_Result">
+    <Property Type="Int32" Name="RezervasyonNo" Nullable="false" />
+    <Property Type="Int32" Name="MasaNo" Nullable="true" />
+    <Property Type="String" Name="KisiAdSoyad" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="KisiSayisi" Nullable="true" />
+    <Property Type="String" Name="GelecegiSaat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefon" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SiparisListele_Result">
+    <Property Type="Int32" Name="SiparisNo" Nullable="false" />
+    <Property Type="String" Name="YemekAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IcecekAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TatliAdi" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SiparisSirala_Result">
+    <Property Type="Int32" Name="SiparisNo" Nullable="false" />
+    <Property Type="String" Name="YemekAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IcecekAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TatliAdi" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

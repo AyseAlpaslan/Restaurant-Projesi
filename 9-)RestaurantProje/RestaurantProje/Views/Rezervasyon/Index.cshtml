@@ -1,0 +1,60 @@
+﻿@model IEnumerable<RestaurantProje.Models.RezervasyonModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPageMusteri.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Yenisini Ekle", "EY")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.MasaNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KisiAdSoyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KisiSayisi)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.GelecegiSaat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MasaNo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.KisiAdSoyad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.KisiSayisi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GelecegiSaat)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Telefon)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.RezervasyonNo }) |
+
+        @Html.ActionLink("Delete", "Delete", new { id = item.RezervasyonNo })
+    </td>
+</tr>
+}
+
+</table>

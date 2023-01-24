@@ -1,0 +1,62 @@
+﻿@model IEnumerable<RestaurantProje.Models.MenuModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Yenisini Ekle", "EY")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.YemekAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YemekFiyati)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IcecekAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IcecekFiyati)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TatliAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TatliFiyati)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.YemekAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YemekFiyati)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IcecekAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IcecekFiyati)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TatliAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TatliFiyati)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "EY", new { id = item.MenuNo }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.MenuNo })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<RestaurantProje.Models.SiparisModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPageMusteri.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Yenisini Ekle", "EY")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.YemekAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IcecekAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TatliAdi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.YemekAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IcecekAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TatliAdi)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "EY", new { id = item.SiparisNo }) |
+    
+            @Html.ActionLink("Sil", "Delete", new { id = item.SiparisNo })
+        </td>
+    </tr>
+}
+
+</table>
